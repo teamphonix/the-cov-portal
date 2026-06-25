@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Cov - By BLU | Training Portal</title>
+  <!-- Google Fonts for Montserrat & EB Garamond (luxury serif Alta R alternative) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background decorative elements for premium coastal feel -->
+  <div class="glass-bg-glow glow-1"></div>
+  <div class="glass-bg-glow glow-2"></div>
+
+  <!-- Global Header Navigation -->
+  <header class="global-header">
+    <div class="header-container">
+      <button id="back-btn" class="icon-btn hidden" aria-label="Go back">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>Back</span>
+      </button>
+      <div class="brand-logo-small" id="nav-logo">
+        <span class="logo-script-small">Cov</span>
+        <span class="logo-subtitle-small">BY BLU</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-container">
+
+    <!-- LANDING VIEW -->
+    <section id="view-landing" class="view active">
+      <div class="hero-section">
+        <div class="brand-logo-large">
+          <h1 class="logo-script">Cov</h1>
+          <div class="logo-divider"></div>
+          <span class="logo-subtitle">BY BLU</span>
+          <span class="logo-tagline">Wine Training</span>
+        </div>
+        <p class="hero-subtext">"Master the Knowledge. Deliver the Experience."</p>
+
+        <!-- Search Bar with dynamic dropdown suggestions -->
+        <div class="search-container">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="wine-search" placeholder="Search Wines By The Glass (e.g. Celeste, Allimant)..." autocomplete="off">
+            <button id="search-clear-btn" class="search-clear hidden">&times;</button>
+          </div>
+          <div id="search-suggestions" class="search-suggestions-dropdown hidden"></div>
+        </div>
+      </div>
+
+      <!-- Core Training Categories -->
+      <div class="section-title-wrapper">
+        <h2 class="section-heading">Training Program</h2>
+        <span class="section-subheading">Select a path to begin learning</span>
+      </div>
+
+      <div class="grid grid-2x2">
+        <div class="card interactive-card active" id="card-wines">
+          <div class="card-icon">🍷</div>
+          <h3 class="card-title">Wines By The Glass</h3>
+          <p class="card-description">Master our curated list, flavor notes, cheat sheets, and wine-pairings.</p>
+          <div class="card-action">Enter Training →</div>
+        </div>
+
+        <div class="card disabled-card">
+          <div class="card-badge">Coming Soon</div>
+          <div class="card-icon">🍸</div>
+          <h3 class="card-title">Cocktails</h3>
+          <p class="card-description">Classic recipes, signature mixes, and glassware requirements.</p>
+        </div>
+
+        <div class="card disabled-card">
+          <div class="card-badge">Coming Soon</div>
+          <div class="card-icon">🍽</div>
+          <h3 class="card-title">Food</h3>
+          <p class="card-description">In-depth culinary components, allergy guides, and chef pairings.</p>
+        </div>
+
+        <div class="card disabled-card">
+          <div class="card-badge">Coming Soon</div>
+          <div class="card-icon">📋</div>
+          <h3 class="card-title">Policies</h3>
+          <p class="card-description">Service standards, steps of service, opening, and closing duties.</p>
+        </div>
+      </div>
+
+      <!-- Future Features / Coming Soon Section -->
+      <div class="section-title-wrapper mt-5">
+        <h2 class="section-heading">Coming Soon</h2>
+        <span class="section-subheading">Future enhancements for the Hospitality OS</span>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card disabled-card mini-card">
+          <div class="mini-icon">📈</div>
+          <h4 class="mini-title">Cellar Progress</h4>
+          <span class="badge-soon">Locked</span>
+        </div>
+        <div class="card disabled-card mini-card">
+          <div class="mini-icon">🎓</div>
+          <h4 class="mini-title">Cov Academy</h4>
+          <span class="badge-soon">Locked</span>
+        </div>
+        <div class="card disabled-card mini-card">
+          <div class="mini-icon">🏆</div>
+          <h4 class="mini-title">Leaderboards</h4>
+          <span class="badge-soon">Locked</span>
+        </div>
+        <div class="card disabled-card mini-card">
+          <div class="mini-icon">🎭</div>
+          <h4 class="mini-title">Mock Service</h4>
+          <span class="badge-soon">Locked</span>
+        </div>
+        <div class="card disabled-card mini-card">
+          <div class="mini-icon">🤖</div>
+          <h4 class="mini-title">AI Coaching</h4>
+          <span class="badge-soon">Locked</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- WINE TRAINING CENTER (Wines By The Glass selected) -->
+    <section id="view-wine-center" class="view">
+      <div class="view-header">
+        <span class="pre-title">Module 01</span>
+        <h2 class="page-title">Wine Training Center</h2>
+        <p class="page-subtitle">Learn the list and test your memory through quick games</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card interactive-card choice-card" id="btn-flashcards">
+          <div class="choice-visual font-serif">📚</div>
+          <h3 class="card-title font-serif">The Wine Library</h3>
+          <p class="card-description">Interactive flashcards mapping producer details, soil descriptions, taste profiles, and replacement cheat sheets.</p>
+          <div class="card-action">Open Library →</div>
+        </div>
+
+        <div class="card interactive-card choice-card" id="btn-tasting-game">
+          <div class="choice-visual font-serif">🥂</div>
+          <h3 class="card-title font-serif">Adam's Wine Tasting</h3>
+          <p class="card-description">Lightweight, addictive memory matches to test you on grapes, regions, guest recommendations, and taste profiles.</p>
+          <div class="card-action">Start Tasting →</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- THE WINE LIBRARY (Flashcards View) -->
+    <section id="view-flashcards" class="view">
+      <div class="view-header text-center">
+        <span class="pre-title">The Wine Library</span>
+        <h2 class="page-title font-serif">Flashcard Trainer</h2>
+        <p class="page-subtitle">Tap the card to flip it and read detailed training notes.</p>
+      </div>
+
+      <div class="flashcard-container">
+        <!-- Flashcard Flip Item -->
+        <div class="flashcard" id="main-flashcard">
+          <div class="flashcard-inner">
+            
+            <!-- FRONT SIDE -->
+            <div class="flashcard-front">
+              <div class="card-shine"></div>
+              <div class="flashcard-header">
+                <span class="wine-category-tag" id="fc-front-category">Sparkling</span>
+              </div>
+              <div class="bottle-mockup-wrapper">
+                <div class="bottle-render" id="fc-front-bottle">
+                  <div class="bottle-label">
+                    <span class="bottle-label-text" id="fc-label-brand">Cov</span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="fc-wine-name font-serif" id="fc-front-name">Colliano Brut Ribolla Gialla</h3>
+              <p class="fc-instruction">Tap to reveal profile</p>
+            </div>
+
+            <!-- BACK SIDE -->
+            <div class="flashcard-back">
+              <div class="back-scroll-container" id="fc-back-content">
+                <!-- Programmatically populated sections -->
+              </div>
+              <p class="fc-instruction-back">Tap card to flip back</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Navigation & Controls -->
+        <div class="flashcard-controls">
+          <button id="fc-prev" class="control-btn" aria-label="Previous card">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Previous</span>
+          </button>
+          
+          <div class="card-counter-badge">
+            <span id="fc-counter-current">1</span> / <span id="fc-counter-total">13</span>
+          </div>
+
+          <button id="fc-next" class="control-btn" aria-label="Next card">
+            <span>Next</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <div class="extra-controls">
+          <button id="fc-shuffle" class="secondary-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+            Shuffle Cards
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ADAM'S WINE TASTING (Game Center & Play Views) -->
+    <section id="view-game" class="view">
+      
+      <!-- GAME SELECTION VIEW -->
+      <div id="game-selection">
+        <div class="view-header">
+          <span class="pre-title">Tasting Room</span>
+          <h2 class="page-title font-serif">Adam's Wine Tasting</h2>
+          <p class="page-subtitle">Select a study game below to challenge your memory and recall speed</p>
+        </div>
+
+        <div class="grid grid-3 mt-4">
+          <div class="card interactive-card game-mode-card" data-mode="1">
+            <div class="game-emoji">🍷</div>
+            <h4 class="game-mode-title font-serif">Guess the Wine</h4>
+            <p class="game-mode-desc">Identify the correct wine given the origin country, grape variety, and three tasting notes.</p>
+          </div>
+
+          <div class="card interactive-card game-mode-card" data-mode="2">
+            <div class="game-emoji">🌍</div>
+            <h4 class="game-mode-title font-serif">Guess the Country</h4>
+            <p class="game-mode-desc">Given the wine by the glass name, identify its origin country from the selection.</p>
+          </div>
+
+          <div class="card interactive-card game-mode-card" data-mode="3">
+            <div class="game-emoji">🍇</div>
+            <h4 class="game-mode-title font-serif">Guess the Grape</h4>
+            <p class="game-mode-desc">Match the wine by the glass name to its exact grape variety or blend configuration.</p>
+          </div>
+
+          <div class="card interactive-card game-mode-card" data-mode="4">
+            <div class="game-emoji">💬</div>
+            <h4 class="game-mode-title font-serif">Guest Recommendation</h4>
+            <p class="game-mode-desc">A guest asks for a replacement for a common wine (e.g. Sancerre). Recommend the perfect Cov option!</p>
+          </div>
+
+          <div class="card interactive-card game-mode-card" data-mode="5">
+            <div class="game-emoji">📖</div>
+            <h4 class="game-mode-title font-serif">Match the Producer</h4>
+            <p class="game-mode-desc">Read the producer story and family history, then choose the wine it represents.</p>
+          </div>
+
+          <div class="card interactive-card game-mode-card" data-mode="6">
+            <div class="game-emoji">👃</div>
+            <h4 class="game-mode-title font-serif">Taste Profile Match</h4>
+            <p class="game-mode-desc">Read three key nose and palate descriptors (e.g. Lemon, Green Apple, Wet Stone) and identify the wine.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTIVE PLAY SCREEN -->
+      <div id="game-active-play" class="hidden">
+        <div class="game-hud">
+          <div class="hud-item">
+            <span class="hud-label">Game Mode</span>
+            <span class="hud-value font-serif" id="game-active-mode-title">Guess the Wine</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Question</span>
+            <span class="hud-value" id="game-question-counter">1 / 5</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Current Score</span>
+            <span class="hud-value highlight" id="game-score-display">0</span>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <!-- Question prompt container -->
+          <div class="question-container">
+            <span class="question-pre">Question Prompt</span>
+            <h3 class="question-title font-serif" id="game-question-text">Question goes here?</h3>
+            
+            <!-- Extra info context blocks for matching notes or stories -->
+            <div id="game-question-context" class="question-context-box hidden">
+              <!-- Bullet points of tasting notes / stories -->
+            </div>
+          </div>
+
+          <!-- Answer options -->
+          <div class="options-container" id="game-options-list">
+            <!-- Programmatically rendered answer buttons -->
+          </div>
+        </div>
+
+        <!-- Explanation & Feedback Modal Overlay -->
+        <div id="feedback-overlay" class="feedback-overlay hidden">
+          <div class="feedback-content-card">
+            <div class="feedback-header">
+              <span class="feedback-icon" id="feedback-emoji">✅</span>
+              <h4 class="feedback-title font-serif" id="feedback-status-text">Correct!</h4>
+            </div>
+            <div class="feedback-body">
+              <p id="feedback-explanation">Explanation text goes here...</p>
+            </div>
+            <div class="feedback-actions">
+              <button id="feedback-next-btn" class="primary-btn w-full">Next Question →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GAME OVER SCREEN -->
+      <div id="game-over-screen" class="hidden">
+        <div class="game-over-card text-center">
+          <div class="trophy-visual">🏆</div>
+          <h3 class="page-title font-serif">Tasting Round Complete!</h3>
+          <p class="page-subtitle">Here is how you performed under pressure:</p>
+
+          <div class="final-score-box">
+            <span class="final-score-num" id="final-score-value">4 / 5</span>
+            <span class="final-score-label" id="final-score-evaluation">Outstanding service readiness!</span>
+          </div>
+
+          <div class="game-over-actions">
+            <button id="game-play-again-btn" class="primary-btn">Play Again</button>
+            <button id="game-return-center-btn" class="secondary-btn">Return to Training Center</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Premium footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>&copy; 2026 The Cov - By BLU. Powered by Hospitality OS.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

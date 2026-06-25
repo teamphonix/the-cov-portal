@@ -1,0 +1,1299 @@
+/* ==========================================================================
+   THE COV - BY BLU: DESIGN SYSTEM & CORE STYLES
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --color-white: #ffffff;
+  --color-bg-base: #faf8f6;
+  
+  /* Primary Soft Peach Brand Colors */
+  --color-peach-light: #fff5ef;
+  --color-peach-mid: #ffd9c8;
+  --color-peach-dark: #cc9a85;
+  --color-peach-accent: #e59373;
+  
+  /* Light Blue Gray Brand Colors */
+  --color-blue-light: #f0f4f7;
+  --color-blue-mid: #d7e3eb;
+  --color-blue-dark: #7b94a3;
+  --color-blue-accent: #5c788a;
+
+  /* Typography & Text */
+  --color-text-primary: #332721; /* Soft Dark Espresso */
+  --color-text-muted: #6e5e56;
+  --color-border: #ebdcd3;
+  
+  /* Shadows */
+  --shadow-premium-soft: 0 12px 40px rgba(51, 39, 33, 0.04), 0 1px 10px rgba(51, 39, 33, 0.02);
+  --shadow-premium-hover: 0 20px 48px rgba(51, 39, 33, 0.08), 0 4px 16px rgba(51, 39, 33, 0.04);
+  --shadow-button-press: 0 2px 4px rgba(51, 39, 33, 0.05);
+
+  /* Fonts */
+  --font-sans: 'Montserrat', sans-serif;
+  --font-serif: 'EB Garamond', 'Playfair Display', Georgia, serif;
+}
+
+/* Base resets & layout */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Background Glow Effects */
+.glass-bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.glow-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--color-peach-mid);
+  top: -100px;
+  right: -100px;
+}
+
+.glow-2 {
+  width: 600px;
+  height: 600px;
+  background: var(--color-blue-mid);
+  bottom: -150px;
+  left: -150px;
+}
+
+/* Global Header Navigation */
+.global-header {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(235, 220, 211, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.header-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Buttons Styling */
+.icon-btn {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding: 0.6rem 1.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-premium-soft);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-premium-hover);
+  border-color: var(--color-peach-accent);
+}
+
+.icon-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-10px);
+}
+
+/* App Main Container */
+.app-container {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+
+/* Views switching transition styles */
+.view {
+  display: none;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.view.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Section Landing Page */
+.hero-section {
+  text-align: center;
+  padding: 4rem 1rem 3.5rem;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* Small Branded Navigation Logo */
+.brand-logo-small {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.logo-script-small {
+  font-family: 'Great Vibes', 'EB Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-bottom: -4px;
+}
+
+.logo-subtitle-small {
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* Large Hero Logo */
+.brand-logo-large {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo-script {
+  font-family: 'Great Vibes', 'EB Garamond', serif;
+  font-size: 6.5rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 0.8;
+}
+
+.logo-divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-peach-dark);
+  margin: 0.8rem 0;
+}
+
+.logo-subtitle {
+  font-size: 0.95rem;
+  letter-spacing: 0.35em;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+.logo-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--color-peach-dark);
+  margin-top: 0.4rem;
+}
+
+.hero-subtext {
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Grid Utilities */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-2x2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Cards Premium Styling */
+.card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 1.5rem;
+  padding: 2.2rem;
+  box-shadow: var(--shadow-premium-soft);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+}
+
+.interactive-card {
+  cursor: pointer;
+}
+
+.interactive-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-premium-hover);
+  border-color: var(--color-peach-mid);
+}
+
+.interactive-card:active {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-premium-soft);
+}
+
+/* Branded card specific fills */
+#card-wines {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 242, 236, 0.8));
+  border-color: rgba(255, 217, 200, 0.5);
+}
+
+#card-wines:hover {
+  border-color: var(--color-peach-accent);
+}
+
+/* Disabled Card Styles */
+.disabled-card {
+  opacity: 0.65;
+  background: rgba(240, 240, 240, 0.4);
+  border-color: rgba(220, 220, 220, 0.4);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.card-badge {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background-color: var(--color-blue-dark);
+  color: var(--color-white);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.35rem 0.8rem;
+  border-radius: 50px;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  display: inline-block;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--color-text-primary);
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.card-action {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-peach-accent);
+  text-transform: uppercase;
+  transition: transform 0.3s ease;
+}
+
+.interactive-card:hover .card-action {
+  transform: translateX(4px);
+}
+
+/* Section Title Headings */
+.section-title-wrapper {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.section-subheading {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+.mt-5 { margin-top: 5rem; }
+.mt-4 { margin-top: 2.5rem; }
+.w-full { width: 100%; }
+
+/* Mini Cards for Coming Soon features */
+.mini-card {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.mini-icon {
+  font-size: 1.6rem;
+}
+
+.mini-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  flex: 1;
+  color: var(--color-text-primary);
+}
+
+.badge-soon {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-blue-dark);
+  background: var(--color-blue-mid);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Search Bar styling */
+.search-container {
+  position: relative;
+  max-width: 540px;
+  width: 100%;
+  margin: 2rem auto 0;
+  z-index: 10;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding: 0.35rem 0.6rem 0.35rem 1.5rem;
+  box-shadow: var(--shadow-premium-soft);
+  transition: all 0.3s ease;
+}
+
+.search-input-wrapper:focus-within {
+  border-color: var(--color-peach-accent);
+  box-shadow: var(--shadow-premium-hover);
+  transform: scale(1.01);
+}
+
+.search-icon {
+  color: var(--color-peach-dark);
+  margin-right: 0.8rem;
+  flex-shrink: 0;
+}
+
+#wine-search {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  padding: 0.6rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  font-weight: 400;
+}
+
+#wine-search::placeholder {
+  color: #a49187;
+  font-weight: 300;
+}
+
+.search-clear {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--color-peach-dark);
+  cursor: pointer;
+  padding: 0 0.8rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.search-clear.hidden {
+  display: none;
+}
+
+/* Dropdown Suggestion List */
+.search-suggestions-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 1.2rem;
+  box-shadow: var(--shadow-premium-hover);
+  overflow: hidden;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 50;
+  animation: slideDownFade 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.search-suggestions-dropdown.hidden {
+  display: none;
+}
+
+.suggestion-item {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid rgba(235, 220, 211, 0.4);
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: var(--color-peach-light);
+}
+
+.suggestion-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.suggestion-meta {
+  font-size: 0.75rem;
+  color: var(--color-blue-dark);
+  background: var(--color-blue-mid);
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+@keyframes slideDownFade {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* View Header Details */
+.view-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+}
+
+.view-header.text-center {
+  text-align: center;
+}
+
+.pre-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--color-blue-accent);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.page-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+/* Training Choice Center Card Styling */
+.choice-card {
+  padding: 3rem 2.5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.choice-visual {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   THE WINE LIBRARY: FLASHCARD LAYOUT & ANIMATION
+   ========================================================================== */
+
+.flashcard-container {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Card 3D Flip Mechanics */
+.flashcard {
+  perspective: 1500px;
+  width: 100%;
+  aspect-ratio: 3 / 4.4;
+  cursor: pointer;
+  border-radius: 2rem;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+/* Flip state triggers */
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 2rem;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-premium-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+/* Front Design */
+.flashcard-front {
+  background: linear-gradient(135deg, var(--color-white), var(--color-peach-light));
+  align-items: center;
+  overflow: hidden;
+}
+
+.card-shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+
+.flashcard-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.wine-category-tag {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(51, 39, 33, 0.02);
+}
+
+/* Realistic CSS Bottle Rendering with Gradients */
+.bottle-mockup-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.bottle-render {
+  width: 60px;
+  height: 220px;
+  border-radius: 6px 6px 12px 12px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(51, 39, 33, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glass bottle neck and cap details */
+.bottle-render::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 60px;
+  background: inherit;
+  border-radius: 4px 4px 0 0;
+}
+
+.bottle-render::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 50px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 12px;
+  background: #c5a059; /* Metallic gold foil cap */
+  border-radius: 2px;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.4);
+}
+
+.bottle-label {
+  width: 85%;
+  height: 90px;
+  background: #fdfbf7;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+}
+
+.bottle-label-text {
+  font-family: 'Great Vibes', serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--color-text-primary);
+}
+
+.fc-wine-name {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-text-primary);
+  margin-top: 1rem;
+  line-height: 1.3;
+}
+
+.fc-instruction {
+  font-size: 0.75rem;
+  color: var(--color-peach-accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+/* Back Design */
+.flashcard-back {
+  background: var(--color-white);
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  padding: 0; /* padding is handled by scroll container */
+}
+
+.back-scroll-container {
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow-y: auto;
+  padding: 2.5rem 2rem 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-blue-mid) transparent;
+}
+
+.back-scroll-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.back-scroll-container::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue-mid);
+  border-radius: 4px;
+}
+
+/* Flashcard Details Styling (Back of card) */
+.fc-back-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.fc-wine-name-back {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.fc-category-back {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-blue-accent);
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+.fc-detail-section {
+  margin-bottom: 1.4rem;
+}
+
+.fc-detail-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-peach-accent);
+  margin-bottom: 0.25rem;
+}
+
+.fc-detail-value {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+/* Bold highlighted values */
+.fc-detail-value strong {
+  font-weight: 600;
+}
+
+/* Branded Cheat Sheet highlight box */
+.fc-cheat-sheet-box {
+  background: var(--color-peach-light);
+  border-left: 3px solid var(--color-peach-accent);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.fc-instruction-back {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(235, 220, 211, 0.4);
+  background: var(--color-peach-light);
+  border-radius: 0 0 2rem 2rem;
+  width: 100%;
+}
+
+/* Flashcard Navigation Controls */
+.flashcard-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.control-btn {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-premium-soft);
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+  border-color: var(--color-blue-dark);
+  color: var(--color-blue-accent);
+  transform: translateY(-1px);
+}
+
+.card-counter-badge {
+  background: var(--color-blue-mid);
+  color: var(--color-blue-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+}
+
+.extra-controls {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px dashed var(--color-peach-accent);
+  border-radius: 50px;
+  padding: 0.6rem 1.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-peach-accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: var(--color-peach-light);
+  border-style: solid;
+}
+
+/* ==========================================================================
+   ADAM'S WINE TASTING: GAME PLAY INTERFACE
+   ========================================================================== */
+
+/* Game Selection Menu */
+.game-mode-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--color-white);
+}
+
+.game-emoji {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.game-mode-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.game-mode-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Game HUD */
+.game-hud {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-premium-soft);
+}
+
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hud-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.hud-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.hud-value.highlight {
+  color: var(--color-peach-accent);
+}
+
+/* Game Main Card */
+.game-card {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 2rem;
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-premium-soft);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.question-container {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.question-pre {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-blue-accent);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.question-title {
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+/* Question context block e.g. for bullet tasting lists */
+.question-context-box {
+  background: var(--color-blue-light);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 1.2rem;
+  text-align: left;
+  animation: fadeIn 0.4s ease;
+}
+
+.question-context-box.hidden {
+  display: none;
+}
+
+.context-list {
+  list-style: none;
+}
+
+.context-item {
+  font-size: 0.95rem;
+  padding: 0.4rem 0 0.4rem 1.8rem;
+  position: relative;
+  color: var(--color-text-primary);
+}
+
+.context-item::before {
+  content: '✦';
+  position: absolute;
+  left: 0.2rem;
+  color: var(--color-blue-dark);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Multiple choice buttons layout */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.option-btn {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.2rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(51, 39, 33, 0.02);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.option-btn:hover {
+  border-color: var(--color-blue-dark);
+  background-color: var(--color-blue-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-premium-hover);
+}
+
+.option-btn:active {
+  transform: translateY(0);
+}
+
+/* Feedback Overlay Modal */
+.feedback-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(51, 39, 33, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.feedback-overlay.hidden {
+  display: none;
+}
+
+.feedback-content-card {
+  background: var(--color-white);
+  border-radius: 2rem;
+  padding: 3rem 2.5rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: var(--shadow-premium-hover);
+  text-align: center;
+  animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.feedback-header {
+  margin-bottom: 1.5rem;
+}
+
+.feedback-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.feedback-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.feedback-body {
+  margin-bottom: 2.2rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.primary-btn {
+  background: var(--color-peach-accent);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(229, 147, 115, 0.25);
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  background: #de805a;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(229, 147, 115, 0.35);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+/* Game Over Card Details */
+.game-over-card {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 2rem;
+  padding: 4rem 3rem;
+  box-shadow: var(--shadow-premium-soft);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.trophy-visual {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.final-score-box {
+  background: var(--color-peach-light);
+  border-radius: 1.5rem;
+  padding: 2.5rem 1.5rem;
+  margin: 2.2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.final-score-num {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-peach-accent);
+  line-height: 1;
+  font-family: var(--font-serif);
+}
+
+.final-score-label {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.game-over-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.game-over-actions button {
+  width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Global Footer styling */
+.app-footer {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(235, 220, 211, 0.4);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUTS (MOBILE OPTIMIZATION)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  body {
+    background-color: var(--color-white);
+  }
+  
+  .app-container {
+    padding: 1.5rem 1.2rem;
+  }
+  
+  .hero-section {
+    padding: 2rem 0.5rem 2rem;
+  }
+  
+  .logo-script {
+    font-size: 4.8rem;
+  }
+  
+  .section-heading {
+    font-size: 1.6rem;
+  }
+  
+  .card {
+    padding: 1.8rem 1.4rem;
+  }
+  
+  .flashcard-front, .flashcard-back {
+    padding: 1.8rem 1.4rem;
+  }
+  
+  .control-btn span {
+    display: none;
+  }
+  
+  .control-btn {
+    padding: 0.8rem;
+    border-radius: 50%;
+  }
+  
+  .game-card {
+    padding: 2rem 1.2rem;
+  }
+}
