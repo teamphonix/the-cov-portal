@@ -2,7 +2,7 @@
 // THE COV - BY BLU: FRONTEND SPA LOGIC & GAME ENGINE
 // ==========================================================================
 
-// Embedded wine dataset to allow direct double-click execution (bypasses browser CORS fetch restrictions)
+// Embedded wine dataset containing actual bottle image URLs
 const wines = [
   {
     "id": "colliano-brut",
@@ -20,7 +20,7 @@ const wines = [
     "cheatSheet": "With its zesty acidity, and yeasty finish this Brut Ribolla is a perfect substitute for CHAMPAGNE, CAVA, or a yeasty alternative to a refreshing beer.",
     "pairingSuggestions": "Superb as an elegant aperitif, or paired with oysters, delicate seafood, sushi, and prosciutto.",
     "interestingFacts": "Ribolla Gialla (Rebula) is the historic signature grape of the Brda region, celebrated for its high natural acidity.",
-    "bottleColor": "linear-gradient(135deg, #2b3a1a, #475a2d)"
+    "image": "https://laureateimports.com/wp-content/uploads/2016/06/Colliano-Ribolla-Gialla-Brut.png"
   },
   {
     "id": "thierry-tissot",
@@ -36,7 +36,7 @@ const wines = [
     "producerStory": "Thierry Tissot is an ancestral estate dedicated to cultivating complexity and mountain precision in the steep slopes of Bugey.",
     "craftsmanship": "Méthode Traditionnelle: Secondary fermentation in the bottle. 100% Hand-Harvested: Grapes sourced entirely from estate vineyards. Aged on Lees: Developed over time to cultivate complexity and a signature creamy texture.",
     "cheatSheet": "This sparkling rose is dry, and crisp, but has a very present ripe and jammy fruit quality that gives it the illusion of residual sugar. An alternative for: PROSECCO ROSE, or a sweeter style of CHAMPAGNE.",
-    "bottleColor": "linear-gradient(135deg, #f7a8b8, #e57c91)"
+    "image": "https://images.vivino.com/thumbs/u86aFvpeTeC-H_1G1r-X6A_pb_x960.png"
   },
   {
     "id": "pago-del-cielo",
@@ -51,7 +51,7 @@ const wines = [
     "palate": "Crisp, zesty, and persistent. Showcases citrus fruit flavors, balanced by a smooth, velvety texture from sur lies aging.",
     "producerStory": "Pago del Cielo is a Torres family estate in Rueda known for intense, elegant, high-altitude white wines under sustainable viticulture and night harvesting.",
     "cheatSheet": "Because it bridges the gap between lighter, zesty wines and fuller bodied fruit-forward wines, Verdelho is a perfect substitute for SAUVIGNON BLANC, PINOT GRIGIO, or a lighter CHARDONNAY.",
-    "bottleColor": "linear-gradient(135deg, #d4af37, #b8860b)"
+    "image": "https://images.vivino.com/thumbs/0150d180n3w3h_pb_x960.png"
   },
   {
     "id": "allimant-laugner",
@@ -67,7 +67,7 @@ const wines = [
     "producerStory": "Allimant Laugner is a historic estate producing pure, expressive Alsatian wines driven by family heritage and traditional practices.",
     "cheatSheet": "With complex floral aromatics, slight sweetness and full mouthfeel use for: RIESLING (sweet or dry), VIOGNIER, or even MOSCATO (remind guest the wine is still, no bubbles).",
     "interestingFacts": "What’s the Difference From a single-varietal Riesling?: This wine is more aromatic and rounder due to the blend of Pinot Gris and Muscat, while retaining Riesling’s signature crisp, refreshing acidity and clean finish.",
-    "bottleColor": "linear-gradient(135deg, #c5d3a9, #a0b17d)"
+    "image": "https://images.vivino.com/thumbs/P9Q4aJ2xRmqHl3g2WjQ4XQ_pb_x960.png"
   },
   {
     "id": "royal-tokaji",
@@ -82,7 +82,7 @@ const wines = [
     "palate": "Crisp and vibrant. Medium-bodied with zesty, laser-focused acidity supporting flavors of green apple, lemon peel, and a persistent, salty mineral finish.",
     "producerStory": "Royal Tokaji (est. 1990) is globally renowned for revitalizing the legendary white wines of Hungary's historic Tokaj region, merging history with modern classic winemaking.",
     "cheatSheet": "Because it balances electric acidity, deep stone fruit, and complex volcanic minerality, Dry Furmint is an exceptional alternative for: NEW ZEALAND STYLE SAUVIGNON BLANC, CHABLIS (Unoaked Chardonnay), DRY RIESLING.",
-    "bottleColor": "linear-gradient(135deg, #e8dfc5, #cfc199)"
+    "image": "https://images.vivino.com/thumbs/v1l8w0d8R2yC7-sL1N51xA_pb_x960.png"
   },
   {
     "id": "provins-l-alpage",
@@ -97,7 +97,7 @@ const wines = [
     "palate": "Dry, crisp, and lively. Very refreshing with a delicate, natural spritz, featuring flavors of fresh orchard fruits, lemon zest, and a clean finish.",
     "producerStory": "Provins is Switzerland's largest and one of its most prestigious cooperatives, founded in 1930 in the heart of the Valais alpine region. L'Alpage is a classic expression of Chasselas celebrating pure, high-altitude alpine character.",
     "cheatSheet": "Because it is elegant and mineral driven, Chasselas is an exceptional alternative for: SANCERRE (SAUVIGNON BLANC), CHABLIS (Unoaked Chardonnay) or ALBARINO.",
-    "bottleColor": "linear-gradient(135deg, #dce3c7, #bec9a2)"
+    "image": "https://images.vivino.com/thumbs/YpL17qRDTzOCqN7bXfM65w_pb_x960.png"
   },
   {
     "id": "villa-della-torre",
@@ -112,7 +112,7 @@ const wines = [
     "palate": "Dry, fresh, and savory with medium body. Highly balanced acidity supporting flavors of peach and green apple, with a lingering mineral finish.",
     "producerStory": "Villa Della Torre is an iconic Renaissance estate in Veneto, producing elegant wines with deep historical heritage. This is a sophisticated and highly versatile option offering vibrant minerality and remarkable aging potential.",
     "cheatSheet": "Because it is rich and full bodied with great fruit character, substitute for: OAKED CHARDONNAY (CALIFORNIA CHARD).",
-    "bottleColor": "linear-gradient(135deg, #d3c49e, #b8a679)"
+    "image": "https://images.vivino.com/thumbs/W1W9x99DTZWC_1g1r-X6A_pb_x960.png"
   },
   {
     "id": "weingut-edelweiss",
@@ -127,7 +127,7 @@ const wines = [
     "palate": "Crisp, dry, and wonderfully refreshing. Vibrant acidity frames juicy cranberry and raspberry and watermelon flavors, leading to a clean, savory finish.",
     "producerStory": "Weingut Edelweiss is renowned for its cool-climate elegance and crisp drinkability, showcasing the brilliant versatility of Austrian estate grapes.",
     "cheatSheet": "Because it is refreshing and juicy, a wonderful new grape to introduce to drinkers of: PROVENCE STYLE ROSE, ITALIAN ROSE, DOMESTIC ROSE.",
-    "bottleColor": "linear-gradient(135deg, #f39fa9, #dd7b87)"
+    "image": "https://images.vivino.com/thumbs/Fj46b8XST8G3m0l9Z1N51A_pb_x960.png"
   },
   {
     "id": "ameztoi-rubentis",
@@ -142,7 +142,7 @@ const wines = [
     "palate": "Effervescent, bone-dry, and incredibly refreshing. Light spritz bursting with tart red fruits, citrus, and a clean, salty finish.",
     "producerStory": "Produced by the Ameztoi family in Getaria, Basque Country, one of the premier and most historic estates in Getariako Txakolina, retaining a natural residual carbon dioxide.",
     "cheatSheet": "No real cheats here… This is a wonderfully different, refreshing, bone dry sparkling rose. Perfect glass for a hot summer day on the Pier!",
-    "bottleColor": "linear-gradient(135deg, #ebb4be, #d694a1)"
+    "image": "https://images.vivino.com/thumbs/pQ7H6s6XST2-M_pb_x960.png"
   },
   {
     "id": "elena-walch",
@@ -157,7 +157,7 @@ const wines = [
     "palate": "Light-bodied, dry, and refreshing. Vibrant red fruit flavors are balanced by soft tannins, lively acidity, and a clean finish.",
     "producerStory": "Elena Walch is a pioneering family-run estate at the forefront of quality in Northern Italy, celebrated for producing elegant, terroir-driven, and highly sustainable wines.",
     "cheatSheet": "Because it is light bodied, fruit-driven with low tannins substitute for: PINOT NOIR or GAMAY.",
-    "bottleColor": "linear-gradient(135deg, #8b1c2b, #6b0c1b)"
+    "image": "https://images.vivino.com/thumbs/B-d2t1xTR4-4m_pb_x960.png"
   },
   {
     "id": "su-entu-su-anima",
@@ -172,7 +172,7 @@ const wines = [
     "palate": "Warm, smooth, and full-bodied. Offers rich red fruit flavors, velvety tannins, balanced acidity, and a long, savory, spicy finish.",
     "producerStory": "Su'entu is a pioneering family winery in the Marmilla region of Sardinia, named after the wind (\"su 'entu\") that sweeps through their hillsides, ensuring pristine fruit quality.",
     "cheatSheet": "This versatile and complex red will please drinkers of: RED BURGUNDY, RIOJA (TEMPRANILLO), COTES DU RHONE, BARBERA and most other ITALIAN REDS.",
-    "bottleColor": "linear-gradient(135deg, #7c1a2e, #5c0a1e)"
+    "image": "https://images.vivino.com/thumbs/2N5wY8tDTe-W_1G1r-X6A_pb_x960.png"
   },
   {
     "id": "le-fief-noir",
@@ -187,7 +187,7 @@ const wines = [
     "palate": "Light to medium-bodied, extremely fresh and juicy. Driven by crisp acidity, soft tannins, and a clean, refreshing mineral finish.",
     "producerStory": "Le Fief Noir is an artisanal domain focused on organic viticulture and producing pure, terroir-driven Loire wines, celebrating the underappreciated Grolleau grape.",
     "cheatSheet": "With Grolleau lending ripe fruit and a touch of funk, and Cab Franc lending structure, this is the perfect version of a “summer” CABERNET SAUVIGNON. Can also satisfy guests looking for MERLOT, BORDEAUX BLENDS, or MALBEC.",
-    "bottleColor": "linear-gradient(135deg, #7b1d2f, #5b0a1f)"
+    "image": "https://images.vivino.com/thumbs/Qx1e5a5-T_-a_pb_x960.png"
   },
   {
     "id": "easton-wines",
@@ -202,7 +202,7 @@ const wines = [
     "palate": "The Mountaineer is a delicious, robust red, made from grapes grown in our granitic soils of the Sierra Nevada foothills. Reminiscent of many Old World blends.",
     "producerStory": "Easton is a pioneering Amador County label, founded in the late 80s by Bill Easton, crafting balanced and elegant wines with complexity from outstanding head-trained, unirrigated old vines.",
     "cheatSheet": "This is juicy, complex and balanced. A bit of comfort for guests overwhelmed by obscure grapes. CABERNET drinkers will appreciate it. So will guests who prefer SYRAH/SHIRAZ, or just prefer CALIFORNIA WINE (from one of the best winemakers).",
-    "bottleColor": "linear-gradient(135deg, #6c1525, #4c0515)"
+    "image": "https://images.vivino.com/thumbs/tS-1JkKSTqO3b_pb_x960.png"
   }
 ];
 
@@ -313,15 +313,11 @@ function setupEventListeners() {
   // Flashcards Flipping & Controls
   const mainCard = document.getElementById('main-flashcard');
   mainCard.addEventListener('click', (e) => {
-    // Prevent flip if clicking back scroll container or controls
-    if (!e.target.closest('.back-scroll-container') && !e.target.closest('.fc-instruction-back')) {
-      mainCard.classList.toggle('flipped');
+    // If they click on previous/next buttons or control panel wrapper, do not trigger flip
+    if (e.target.closest('.flashcard-controls') || e.target.closest('.extra-controls')) {
+      return;
     }
-  });
-
-  // Intercept scroll container clicks so they don't cause flip
-  document.getElementById('fc-back-content').addEventListener('click', (e) => {
-    e.stopPropagation();
+    mainCard.classList.toggle('flipped');
   });
 
   document.getElementById('fc-prev').addEventListener('click', (e) => {
@@ -465,12 +461,9 @@ function renderFlashcard() {
   document.getElementById('fc-front-name').textContent = wine.name;
   document.getElementById('fc-front-category').textContent = wine.category;
   
-  const bottleRender = document.getElementById('fc-front-bottle');
-  bottleRender.style.background = wine.bottleColor || 'linear-gradient(135deg, #d4af37, #b8860b)';
-  
-  // Label inside bottle mock
-  const labelBrand = document.getElementById('fc-label-brand');
-  labelBrand.textContent = wine.name.split(' ').slice(0, 2).join(' ');
+  const bottleImg = document.getElementById('fc-front-bottle-img');
+  bottleImg.src = wine.image || 'https://images.vivino.com/thumbs/0150d180n3w3h_pb_x960.png';
+  bottleImg.alt = wine.name;
 
   // Back Details Construction (Only display sections that exist within each wine's training data)
   const backContainer = document.getElementById('fc-back-content');
