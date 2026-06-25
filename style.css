@@ -608,6 +608,7 @@ body {
   aspect-ratio: 3 / 4.4;
   cursor: pointer;
   border-radius: 2rem;
+  position: relative;
 }
 
 .flashcard-inner {
