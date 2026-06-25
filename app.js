@@ -2,7 +2,210 @@
 // THE COV - BY BLU: FRONTEND SPA LOGIC & GAME ENGINE
 // ==========================================================================
 
-let wines = [];
+// Embedded wine dataset to allow direct double-click execution (bypasses browser CORS fetch restrictions)
+const wines = [
+  {
+    "id": "colliano-brut",
+    "name": "Colliano Brut Ribolla Gialla",
+    "category": "Sparkling",
+    "country": "Slovenia",
+    "region": "Goriška Brda",
+    "soil": "Opoka (marl and sandstone) in the steep, terraced hills of Goriška Brda, Slovenia.",
+    "soilImpact": "This unique mineral-rich soil provides high drainage, imparting vibrant minerality, elegant structure, and a crisp, clean acidity to the grapes.",
+    "grapeVariety": "Ribolla Gialla (Rebula)",
+    "nose": "Crisp green apple, white peach, acacia blossoms, lemon zest, and delicate hints of freshly baked brioche.",
+    "palate": "Creamy and vibrant with a persistent, fine perlage. Refreshing flavors of citrus, pear, and stone fruits, leading to a beautifully structured, mineral-driven finish.",
+    "producerStory": "Klet Brda: Slovenia's renowned cooperative winery, championing sustainable family grape growing.",
+    "craftsmanship": "Methode Traditionnelle: Crafted using the traditional secondary fermentation in the bottle and aged on the lees. Hand-Harvested: Sourced entirely from steep, hand-cultivated terraces where mechanical harvesting is impossible.",
+    "cheatSheet": "With its zesty acidity, and yeasty finish this Brut Ribolla is a perfect substitute for CHAMPAGNE, CAVA, or a yeasty alternative to a refreshing beer.",
+    "pairingSuggestions": "Superb as an elegant aperitif, or paired with oysters, delicate seafood, sushi, and prosciutto.",
+    "interestingFacts": "Ribolla Gialla (Rebula) is the historic signature grape of the Brda region, celebrated for its high natural acidity.",
+    "bottleColor": "linear-gradient(135deg, #2b3a1a, #475a2d)"
+  },
+  {
+    "id": "thierry-tissot",
+    "name": "Thierry Tissot Bugey Rosé Extra Dry NV",
+    "category": "Sparkling Rosé",
+    "country": "France",
+    "region": "Bugey (Mataret hill)",
+    "soil": "Argilo-calcaire (clay-limestone) with glacial scree on the steep slopes of Mataret hill.",
+    "soilImpact": "Brings exceptional mineral precision, crisp mountain freshness, and a structured, elegant backbone.",
+    "grapeVariety": "An ancestral sparkling blend of Mondeuse and Gamay.",
+    "nose": "Expressive and delicate, with aromas of fresh wild strawberry, raspberry, citrus peel, and soft alpine floral notes.",
+    "palate": "Refined and vibrant with fine, creamy bubbles, showing a core of juicy red berries, balanced soft sweetness, and a crisp, mineral-driven finish.",
+    "producerStory": "Thierry Tissot is an ancestral estate dedicated to cultivating complexity and mountain precision in the steep slopes of Bugey.",
+    "craftsmanship": "Méthode Traditionnelle: Secondary fermentation in the bottle. 100% Hand-Harvested: Grapes sourced entirely from estate vineyards. Aged on Lees: Developed over time to cultivate complexity and a signature creamy texture.",
+    "cheatSheet": "This sparkling rose is dry, and crisp, but has a very present ripe and jammy fruit quality that gives it the illusion of residual sugar. An alternative for: PROSECCO ROSE, or a sweeter style of CHAMPAGNE.",
+    "bottleColor": "linear-gradient(135deg, #f7a8b8, #e57c91)"
+  },
+  {
+    "id": "pago-del-cielo",
+    "name": "Pago del Cielo \"Celeste\" Verdejo",
+    "category": "White Wine",
+    "country": "Spain",
+    "region": "Rueda plateau",
+    "soil": "Gravelly and clay-limestone soils of the high-altitude Rueda plateau.",
+    "soilImpact": "Stony, calcium-rich soils coupled with cool high-altitude nights preserve vibrant, racy acidity and intense varietal aromatics.",
+    "grapeVariety": "Verdejo",
+    "nose": "Citrus & Stone fruits: Highly aromatic and fresh, showing notes of green apple, peach, fennel, and aniseed.",
+    "palate": "Crisp, zesty, and persistent. Showcases citrus fruit flavors, balanced by a smooth, velvety texture from sur lies aging.",
+    "producerStory": "Pago del Cielo is a Torres family estate in Rueda known for intense, elegant, high-altitude white wines under sustainable viticulture and night harvesting.",
+    "cheatSheet": "Because it bridges the gap between lighter, zesty wines and fuller bodied fruit-forward wines, Verdelho is a perfect substitute for SAUVIGNON BLANC, PINOT GRIGIO, or a lighter CHARDONNAY.",
+    "bottleColor": "linear-gradient(135deg, #d4af37, #b8860b)"
+  },
+  {
+    "id": "allimant-laugner",
+    "name": "Allimant Laugner \"Vin d'Alsace Gentil\"",
+    "category": "White Wine",
+    "country": "France",
+    "region": "Alsace (Orschwiller)",
+    "soil": "Granitic sand, clay, and limestone soils from the historic, high-elevation slopes of Orschwiller.",
+    "soilImpact": "The granite-rich soil preserves a brilliant mineral acidity and crispness, while the clay elements provide a subtle, elegant roundness and depth.",
+    "grapeVariety": "Riesling, Pinot Gris, Muscat",
+    "nose": "Highly aromatic with expressive notes of white peach, citrus blossom, apricot, and a signature floral touch typical of noble Alsace varieties.",
+    "palate": "Fresh and vibrant. A harmonious blend showcasing green apple, pear, and ripe citrus fruits with an elegant, lingering mineral finish.",
+    "producerStory": "Allimant Laugner is a historic estate producing pure, expressive Alsatian wines driven by family heritage and traditional practices.",
+    "cheatSheet": "With complex floral aromatics, slight sweetness and full mouthfeel use for: RIESLING (sweet or dry), VIOGNIER, or even MOSCATO (remind guest the wine is still, no bubbles).",
+    "interestingFacts": "What’s the Difference From a single-varietal Riesling?: This wine is more aromatic and rounder due to the blend of Pinot Gris and Muscat, while retaining Riesling’s signature crisp, refreshing acidity and clean finish.",
+    "bottleColor": "linear-gradient(135deg, #c5d3a9, #a0b17d)"
+  },
+  {
+    "id": "royal-tokaji",
+    "name": "Royal Tokaji Dry Furmint",
+    "category": "White Wine",
+    "country": "Hungary",
+    "region": "Tokaj",
+    "soil": "Volcanic tuff with layers of loess and clay. This ancient terroir provides a structured foundation.",
+    "soilImpact": "The volcanic soils contribute a powerful, distinct mineral drive, while the clay layers ensure beautiful fruit concentration and structural complexity.",
+    "grapeVariety": "Furmint",
+    "nose": "Highly aromatic and fresh, revealing expressive layers of quince, white peach, honeysuckle, and wet stone.",
+    "palate": "Crisp and vibrant. Medium-bodied with zesty, laser-focused acidity supporting flavors of green apple, lemon peel, and a persistent, salty mineral finish.",
+    "producerStory": "Royal Tokaji (est. 1990) is globally renowned for revitalizing the legendary white wines of Hungary's historic Tokaj region, merging history with modern classic winemaking.",
+    "cheatSheet": "Because it balances electric acidity, deep stone fruit, and complex volcanic minerality, Dry Furmint is an exceptional alternative for: NEW ZEALAND STYLE SAUVIGNON BLANC, CHABLIS (Unoaked Chardonnay), DRY RIESLING.",
+    "bottleColor": "linear-gradient(135deg, #e8dfc5, #cfc199)"
+  },
+  {
+    "id": "provins-l-alpage",
+    "name": "Provins L'Alpage Chasselas",
+    "category": "White Wine",
+    "country": "Switzerland",
+    "region": "Valais",
+    "soil": "Limestone, gravel, and shale on steep alpine terraces of the Valais. This terroir imparts a crisp minerality and mountain freshness.",
+    "soilImpact": "High-altitude limestone-rich soils provide intense freshness and a vibrant mineral backbone, while shale soils bring elegant complexity.",
+    "grapeVariety": "Chasselas (locally called Fendant)",
+    "nose": "Vibrant lime, green pear, delicate linden blossoms, white peach, and a touch of wet stone or flint.",
+    "palate": "Dry, crisp, and lively. Very refreshing with a delicate, natural spritz, featuring flavors of fresh orchard fruits, lemon zest, and a clean finish.",
+    "producerStory": "Provins is Switzerland's largest and one of its most prestigious cooperatives, founded in 1930 in the heart of the Valais alpine region. L'Alpage is a classic expression of Chasselas celebrating pure, high-altitude alpine character.",
+    "cheatSheet": "Because it is elegant and mineral driven, Chasselas is an exceptional alternative for: SANCERRE (SAUVIGNON BLANC), CHABLIS (Unoaked Chardonnay) or ALBARINO.",
+    "bottleColor": "linear-gradient(135deg, #dce3c7, #bec9a2)"
+  },
+  {
+    "id": "villa-della-torre",
+    "name": "Villa Della Torre \"Selva Del Vescovo\" Lugana",
+    "category": "White Wine",
+    "country": "Italy",
+    "region": "Veneto / Lake Garda",
+    "soil": "Glacial clay and limestone soils on the southern banks of Lake Garda, rich in mineral salts.",
+    "soilImpact": "The heavy clay provides excellent structure, body, and longevity, while the limestone infuses a sharp, savory saline minerality.",
+    "grapeVariety": "100% Turbiana",
+    "nose": "Intense and elegant with notes of white flowers, jasmine, golden apple, citrus zest, and a delicate hint of almond.",
+    "palate": "Dry, fresh, and savory with medium body. Highly balanced acidity supporting flavors of peach and green apple, with a lingering mineral finish.",
+    "producerStory": "Villa Della Torre is an iconic Renaissance estate in Veneto, producing elegant wines with deep historical heritage. This is a sophisticated and highly versatile option offering vibrant minerality and remarkable aging potential.",
+    "cheatSheet": "Because it is rich and full bodied with great fruit character, substitute for: OAKED CHARDONNAY (CALIFORNIA CHARD).",
+    "bottleColor": "linear-gradient(135deg, #d3c49e, #b8a679)"
+  },
+  {
+    "id": "weingut-edelweiss",
+    "name": "Weingut Edelweiss \"Evangeline\" Zweigelt Rosé",
+    "category": "Rosé Wine",
+    "country": "Austria",
+    "region": "Niederösterreich (Lower Austria)",
+    "soil": "Deep loess and gravelly clay terraces typical of Niederösterreich.",
+    "soilImpact": "Loess provides rich, juicy fruit expression and roundness, while gravel ensures excellent drainage, enhancing crisp mineral tension.",
+    "grapeVariety": "100% Zweigelt",
+    "nose": "Bright red berries, wild strawberry, red cherry, & watermelon with a hint of white pepper and fresh garden herbs.",
+    "palate": "Crisp, dry, and wonderfully refreshing. Vibrant acidity frames juicy cranberry and raspberry and watermelon flavors, leading to a clean, savory finish.",
+    "producerStory": "Weingut Edelweiss is renowned for its cool-climate elegance and crisp drinkability, showcasing the brilliant versatility of Austrian estate grapes.",
+    "cheatSheet": "Because it is refreshing and juicy, a wonderful new grape to introduce to drinkers of: PROVENCE STYLE ROSE, ITALIAN ROSE, DOMESTIC ROSE.",
+    "bottleColor": "linear-gradient(135deg, #f39fa9, #dd7b87)"
+  },
+  {
+    "id": "ameztoi-rubentis",
+    "name": "Ameztoi Rubentis Txakolina Rosé",
+    "category": "Rosé Wine",
+    "country": "Spain",
+    "region": "Basque Country (Getaria)",
+    "soil": "Sandstone and clay on steep coastal hillsides overlooking the Bay of Biscay.",
+    "soilImpact": "The ocean proximity and clay soils impart a distinct saline minerality, vibrant freshness, and a signature crisp acidity.",
+    "grapeVariety": "Hondarrabi Zuri & Hondarrabi Beltza",
+    "nose": "Bright wild strawberry, raspberry, lime zest, and subtle sea spray.",
+    "palate": "Effervescent, bone-dry, and incredibly refreshing. Light spritz bursting with tart red fruits, citrus, and a clean, salty finish.",
+    "producerStory": "Produced by the Ameztoi family in Getaria, Basque Country, one of the premier and most historic estates in Getariako Txakolina, retaining a natural residual carbon dioxide.",
+    "cheatSheet": "No real cheats here… This is a wonderfully different, refreshing, bone dry sparkling rose. Perfect glass for a hot summer day on the Pier!",
+    "bottleColor": "linear-gradient(135deg, #ebb4be, #d694a1)"
+  },
+  {
+    "id": "elena-walch",
+    "name": "Elena Walch Selezione Alto Adige Schiava",
+    "category": "Red Wine",
+    "country": "Italy",
+    "region": "Alto Adige",
+    "soil": "Morainic soils with clay, gravel, and sandy loam on steep, sunny alpine slopes.",
+    "soilImpact": "These well-drained soils impart a vibrant freshness, delicate mineral structure, and elegant fruit characteristics.",
+    "grapeVariety": "100% Schiava (Vernatsch)",
+    "nose": "Bright red cherries, fresh raspberries, and wild strawberries, with a hint of bitter almond and subtle violet notes.",
+    "palate": "Light-bodied, dry, and refreshing. Vibrant red fruit flavors are balanced by soft tannins, lively acidity, and a clean finish.",
+    "producerStory": "Elena Walch is a pioneering family-run estate at the forefront of quality in Northern Italy, celebrated for producing elegant, terroir-driven, and highly sustainable wines.",
+    "cheatSheet": "Because it is light bodied, fruit-driven with low tannins substitute for: PINOT NOIR or GAMAY.",
+    "bottleColor": "linear-gradient(135deg, #8b1c2b, #6b0c1b)"
+  },
+  {
+    "id": "su-entu-su-anima",
+    "name": "Su'entu \"Su'Anima\" Cannonau di Sardegna",
+    "category": "Red Wine",
+    "country": "Italy",
+    "region": "Sardinia (Marmilla)",
+    "soil": "Calcareous-clayey soils with limestone on the breezy, rolling hills of Marmilla.",
+    "soilImpact": "These rich clay and limestone soils, coupled with persistent sea winds, keep the grapes healthy, concentrate flavors, and impart a distinct mineral depth.",
+    "grapeVariety": "100% Cannonau",
+    "nose": "Intense wild berries, ripe raspberries, and dark cherries layered with black pepper, Mediterranean maquis, and subtle baking spices.",
+    "palate": "Warm, smooth, and full-bodied. Offers rich red fruit flavors, velvety tannins, balanced acidity, and a long, savory, spicy finish.",
+    "producerStory": "Su'entu is a pioneering family winery in the Marmilla region of Sardinia, named after the wind (\"su 'entu\") that sweeps through their hillsides, ensuring pristine fruit quality.",
+    "cheatSheet": "This versatile and complex red will please drinkers of: RED BURGUNDY, RIOJA (TEMPRANILLO), COTES DU RHONE, BARBERA and most other ITALIAN REDS.",
+    "bottleColor": "linear-gradient(135deg, #7c1a2e, #5c0a1e)"
+  },
+  {
+    "id": "le-fief-noir",
+    "name": "Le Fief Noir \"Somnambule\" Anjou",
+    "category": "Red Wine",
+    "country": "France",
+    "region": "Loire Valley (Anjou)",
+    "soil": "Schist / Slate soils typical of the dark Anjou terroirs in the Loire Valley.",
+    "soilImpact": "Schist retains heat and drains well, imparting a distinct mineral tension, lively acidity, and pure, concentrated fruit expression.",
+    "grapeVariety": "Grolleau (~60%) and Cabernet Franc (~40%)",
+    "nose": "Bright red fruits like wild raspberries and strawberries, accented by subtle white pepper and soft floral violet notes.",
+    "palate": "Light to medium-bodied, extremely fresh and juicy. Driven by crisp acidity, soft tannins, and a clean, refreshing mineral finish.",
+    "producerStory": "Le Fief Noir is an artisanal domain focused on organic viticulture and producing pure, terroir-driven Loire wines, celebrating the underappreciated Grolleau grape.",
+    "cheatSheet": "With Grolleau lending ripe fruit and a touch of funk, and Cab Franc lending structure, this is the perfect version of a “summer” CABERNET SAUVIGNON. Can also satisfy guests looking for MERLOT, BORDEAUX BLENDS, or MALBEC.",
+    "bottleColor": "linear-gradient(135deg, #7b1d2f, #5b0a1f)"
+  },
+  {
+    "id": "easton-wines",
+    "name": "Easton Wines \"The Mountaineer\" Barbera/Zinfandel Blend",
+    "category": "Red Wine",
+    "country": "USA",
+    "region": "Sierra Foothills (Shenandoah Valley)",
+    "soil": "Granite-laden soils on steep mountain slopes in the Sierra Foothills.",
+    "soilImpact": "These stony soils impart an amazing mineral sense, yielding low crops of highly concentrated and complex grapes.",
+    "grapeVariety": "50% Zinfandel 50% Barbera",
+    "nose": "Juicy brambly blackberry fruit, big cedar. Zin's muscle and riper fruit combines perfectly with the lifted red fruits and approachability of Barbera.",
+    "palate": "The Mountaineer is a delicious, robust red, made from grapes grown in our granitic soils of the Sierra Nevada foothills. Reminiscent of many Old World blends.",
+    "producerStory": "Easton is a pioneering Amador County label, founded in the late 80s by Bill Easton, crafting balanced and elegant wines with complexity from outstanding head-trained, unirrigated old vines.",
+    "cheatSheet": "This is juicy, complex and balanced. A bit of comfort for guests overwhelmed by obscure grapes. CABERNET drinkers will appreciate it. So will guests who prefer SYRAH/SHIRAZ, or just prefer CALIFORNIA WINE (from one of the best winemakers).",
+    "bottleColor": "linear-gradient(135deg, #6c1525, #4c0515)"
+  }
+];
+
 let flashcardsList = [];
 let currentFlashcardIndex = 0;
 let currentView = 'landing';
@@ -35,17 +238,10 @@ const searchSuggestions = document.getElementById('search-suggestions');
 const searchClearBtn = document.getElementById('search-clear-btn');
 
 // Initialize App
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    const response = await fetch('wines.json');
-    wines = await response.json();
-    flashcardsList = [...wines];
-    
-    setupEventListeners();
-    initSearch();
-  } catch (error) {
-    console.error('Failed to load wine training database:', error);
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  flashcardsList = [...wines];
+  setupEventListeners();
+  initSearch();
 });
 
 // View Navigation Router
@@ -357,7 +553,7 @@ const guestPreferencesMap = [
   { prefer: "Provence Style Rosé", recommend: "Weingut Edelweiss \"Evangeline\" Zweigelt Rosé", reason: "is dry, refreshing, juicy, and extremely clean." },
   { prefer: "Pinot Noir", recommend: "Elena Walch Selezione Alto Adige Schiava", reason: "is light bodied, fruit-driven, and has low tannins." },
   { prefer: "Red Burgundy", recommend: "Su'entu \"Su'Anima\" Cannonau di Sardegna", reason: "is versatile, complex, and captures natural structure." },
-  { prefer: "Cabnernet Sauvignon", recommend: "Easton Wines \"The Mountaineer\" Barbera/Zinfandel Blend", reason: "is juicy, robust, and structured, providing great comfort." },
+  { prefer: "Cabernet Sauvignon", recommend: "Easton Wines \"The Mountaineer\" Barbera/Zinfandel Blend", reason: "is juicy, robust, and structured, providing great comfort." },
   { prefer: "Merlot", recommend: "Le Fief Noir \"Somnambule\" Anjou", reason: "has Grolleau lending ripe fruit and Cabernet Franc lending structure." },
   { prefer: "Syrah / Shiraz", recommend: "Easton Wines \"The Mountaineer\" Barbera/Zinfandel Blend", reason: "provides bold blackberry fruit, big cedar structure, and granitic soil complexity." },
   { prefer: "Champagne / Cava", recommend: "Colliano Brut Ribolla Gialla", reason: "is crafted in Methode Traditionnelle with zesty acidity and a yeasty finish." },
@@ -542,6 +738,7 @@ function renderQuestion() {
   });
 }
 
+// Handler when an answer option is clicked
 function handleAnswerSelect(selectedAnswer) {
   const currentQ = gameConfig.questions[gameConfig.currentQuestionIndex];
   const isCorrect = (selectedAnswer === gameConfig.currentCorrectAnswer);
