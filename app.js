@@ -566,17 +566,29 @@ function startGame(mode) {
     3: "Guess the Grape",
     4: "Guest Recommendation",
     5: "Match the Producer",
-    6: "Taste Profile Match"
+    6: "Profile Match"
   };
   document.getElementById('game-active-mode-title').textContent = modeTitles[mode];
 
-  // Generate 13 questions using distinct wines
-  const shuffledWines = [...wines];
-  shuffleArray(shuffledWines);
-  
-  for (let i = 0; i < gameConfig.totalQuestions; i++) {
-    const wine = shuffledWines[i];
-    gameConfig.questions.push(generateQuestionForMode(mode, wine));
+  if (mode === 6) {
+    gameConfig.totalQuestions = 26;
+    // Generate 26 questions: 1 nose card and 1 palate card for each of the 13 wines
+    wines.forEach(wine => {
+      gameConfig.questions.push(generateQuestionForMode(mode, wine, 'nose'));
+      gameConfig.questions.push(generateQuestionForMode(mode, wine, 'palate'));
+    });
+    // Shuffle the 26 cards so they show up in no particular order
+    shuffleArray(gameConfig.questions);
+  } else {
+    gameConfig.totalQuestions = 13;
+    // Generate 13 questions using distinct wines
+    const shuffledWines = [...wines];
+    shuffleArray(shuffledWines);
+    
+    for (let i = 0; i < gameConfig.totalQuestions; i++) {
+      const wine = shuffledWines[i];
+      gameConfig.questions.push(generateQuestionForMode(mode, wine));
+    }
   }
 
   // Switch Screen to Play Mode
@@ -587,7 +599,7 @@ function startGame(mode) {
   renderQuestion();
 }
 
-function generateQuestionForMode(mode, correctWine) {
+function generateQuestionForMode(mode, correctWine, subType) {
   let promptText = "";
   let contextList = [];
   let answerOptions = [];
@@ -637,8 +649,6 @@ function generateQuestionForMode(mode, correctWine) {
       break;
 
     case 4: // Guest Recommendation
-      // Select a guest scenario matching this correctWine's cheat sheet
-      // Filter list of pre-configured options matching our correct wine name
       const scenario = guestPreferencesMap.find(pref => pref.recommend.includes(correctWine.name.split(' ')[0])) || {
         prefer: "something clean and unique",
         recommend: correctWine.name,
@@ -662,18 +672,18 @@ function generateQuestionForMode(mode, correctWine) {
       explanation = `This story belongs to <strong>${correctWine.name}</strong>. ${correctWine.producerStory}`;
       break;
 
-    case 6: // Taste Profile Match
-      promptText = `Which wine has these distinct descriptors?`;
-      // Extract 3 prominent descriptors from Nose or Palate text
-      const allWords = `${correctWine.nose}, ${correctWine.palate}`.split(/[\s,]+/);
-      const cleanWords = [...new Set(allWords.map(w => w.replace(/[.,()"]/g, '').toLowerCase()).filter(w => w.length > 4))];
-      shuffleArray(cleanWords);
-      const descriptors = cleanWords.slice(0, 3).map(w => w.charAt(0).toUpperCase() + w.slice(1));
-      
-      contextList = descriptors.length >= 3 ? descriptors : ["Citrus", "Minerality", "Stone fruits"];
+    case 6: // Profile Match (Nose or Palate)
+      if (subType === 'nose') {
+        promptText = "Which wine has these Nose notes in the training PDF?";
+        contextList = [ correctWine.nose ];
+        explanation = `<strong>${correctWine.name}</strong> Nose notes:<br><em>${correctWine.nose}</em>`;
+      } else {
+        promptText = "Which wine has these Palate notes in the training PDF?";
+        contextList = [ correctWine.palate ];
+        explanation = `<strong>${correctWine.name}</strong> Palate notes:<br><em>${correctWine.palate}</em>`;
+      }
       answerOptions = [correctWine.name, ...getIncorrectWines(correctWine.id).map(w => w.name)];
       correctAnswerText = correctWine.name;
-      explanation = `<strong>${correctWine.name}</strong> has a tasting profile featuring aromas like: <em>${correctWine.nose}</em> and palate cues like <em>${correctWine.palate}</em>.`;
       break;
   }
 
