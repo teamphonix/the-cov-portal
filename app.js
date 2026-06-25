@@ -215,7 +215,7 @@ let navigationHistory = ['landing'];
 let gameConfig = {
   currentMode: 1,
   currentQuestionIndex: 0,
-  totalQuestions: 5,
+  totalQuestions: 13,
   score: 0,
   questions: [],
   currentCorrectAnswer: null
@@ -570,12 +570,12 @@ function startGame(mode) {
   };
   document.getElementById('game-active-mode-title').textContent = modeTitles[mode];
 
-  // Generate 5 questions using distinct wines
+  // Generate 13 questions using distinct wines
   const shuffledWines = [...wines];
   shuffleArray(shuffledWines);
   
   for (let i = 0; i < gameConfig.totalQuestions; i++) {
-    const wine = shuffledWines[i % shuffledWines.length];
+    const wine = shuffledWines[i];
     gameConfig.questions.push(generateQuestionForMode(mode, wine));
   }
 
