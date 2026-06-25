@@ -41,6 +41,11 @@
   padding: 0;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--color-bg-base);
@@ -49,7 +54,6 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow-x: hidden;
   line-height: 1.6;
 }
 
@@ -1215,6 +1219,11 @@ body {
    ========================================================================== */
 
 @media (max-width: 768px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
   body {
     background-color: var(--color-bg-base);
     overflow-y: auto;
