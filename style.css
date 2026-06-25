@@ -1238,8 +1238,7 @@ body {
   
   /* Flashcard mobile improvements to prevent overflow */
   .flashcard {
-    aspect-ratio: auto;
-    min-height: 520px;
+    height: 520px;
   }
   
   .flashcard-front, .flashcard-back {
