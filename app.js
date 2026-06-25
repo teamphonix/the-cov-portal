@@ -674,11 +674,11 @@ function generateQuestionForMode(mode, correctWine, subType) {
 
     case 6: // Profile Match (Nose or Palate)
       if (subType === 'nose') {
-        promptText = "Which wine has these Nose notes in the training PDF?";
+        promptText = "Which wine has these Nose notes?";
         contextList = [ correctWine.nose ];
         explanation = `<strong>${correctWine.name}</strong> Nose notes:<br><em>${correctWine.nose}</em>`;
       } else {
-        promptText = "Which wine has these Palate notes in the training PDF?";
+        promptText = "Which wine has these Palate notes?";
         contextList = [ correctWine.palate ];
         explanation = `<strong>${correctWine.name}</strong> Palate notes:<br><em>${correctWine.palate}</em>`;
       }
