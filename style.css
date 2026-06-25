@@ -1214,33 +1214,45 @@ body {
 
 @media (max-width: 768px) {
   body {
-    background-color: var(--color-white);
+    background-color: var(--color-bg-base);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   .app-container {
-    padding: 1.2rem 1rem;
+    padding: 1rem;
+    width: 100%;
+    overflow-x: hidden;
   }
   
   .hero-section {
-    padding: 1.5rem 0.2rem 1.5rem;
+    padding: 1.5rem 0.2rem;
   }
   
   .logo-script {
-    font-size: 4.2rem;
+    font-size: 4rem;
   }
   
   .section-heading {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   
   .card {
     padding: 1.5rem 1.2rem;
   }
   
-  /* Flashcard mobile improvements to prevent overflow */
+  /* Precision mobile card dimensions to prevent overflow */
+  .flashcard-container {
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+
   .flashcard {
     aspect-ratio: auto;
-    height: 520px;
+    width: 100%;
+    max-width: 320px;
+    height: 460px;
+    margin: 0 auto;
   }
   
   .flashcard-front, .flashcard-back {
@@ -1248,17 +1260,22 @@ body {
   }
   
   .bottle-mockup-wrapper {
-    height: 250px;
+    height: 200px;
     padding: 0.25rem 0;
   }
   
   .bottle-actual-img {
-    max-height: 250px;
+    max-height: 200px;
   }
   
   .fc-wine-name {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
+    line-height: 1.3;
     margin-top: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   
   .control-btn span {
@@ -1285,7 +1302,7 @@ body {
   }
 
   .question-title {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 
   .option-btn {
@@ -1295,9 +1312,11 @@ body {
 
   .feedback-content-card {
     padding: 2rem 1.5rem;
+    width: 100%;
+    max-width: 90vw;
   }
 
   .feedback-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
