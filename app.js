@@ -599,6 +599,30 @@ function startGame(mode) {
   renderQuestion();
 }
 
+function maskWineNameInStory(story, wineName) {
+  let masked = story;
+  // Common noise words to ignore when masking
+  const noiseWords = new Set(["de", "del", "du", "le", "la", "di", "and", "the", "nv", "dry", "brut", "extra", "rose", "rosé", "blanc", "rouge", "vigne", "vignes", "estate", "wines", "wine", "cellars", "cellar", "vineyards", "vineyard", "selection", "selezione", "gentil"]);
+  
+  // Extract individual words of length > 2
+  const words = wineName.split(/[\s"']+/).map(w => w.replace(/[.,()]/g, "")).filter(w => {
+    const lower = w.toLowerCase();
+    return w.length > 2 && !noiseWords.has(lower);
+  });
+
+  // Sort by length descending to replace longer words first
+  words.sort((a, b) => b.length - a.length);
+
+  words.forEach(word => {
+    const regex = new RegExp(`\\b${word}\\b`, 'gi');
+    masked = masked.replace(regex, "__________________");
+  });
+
+  // Collapse consecutive placeholders separated by spaces into a single clean placeholder
+  masked = masked.replace(/(__________________\s*)+/g, "__________________ ");
+  return masked.trim();
+}
+
 function generateQuestionForMode(mode, correctWine, subType) {
   let promptText = "";
   let contextList = [];
@@ -666,7 +690,8 @@ function generateQuestionForMode(mode, correctWine, subType) {
 
     case 5: // Match the Producer Story
       promptText = `Which wine fits this producer story and history?`;
-      contextList = [ correctWine.producerStory ];
+      const maskedStory = maskWineNameInStory(correctWine.producerStory, correctWine.name);
+      contextList = [ maskedStory ];
       answerOptions = [correctWine.name, ...getIncorrectWines(correctWine.id).map(w => w.name)];
       correctAnswerText = correctWine.name;
       explanation = `This story belongs to <strong>${correctWine.name}</strong>. ${correctWine.producerStory}`;
